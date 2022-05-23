@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_shade_3"
+    android:background="@color/black_shade_1"
     tools:context=".MainActivity">
 
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/idPBLoading"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_centerInParent="true"
         />
 
@@ -86,6 +86,7 @@
                 app:tint="@color/white" />
 
         </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -96,7 +97,7 @@
             android:padding="10dp"
             android:text="23"
             android:textColor="@color/white"
-            android:textsize="70dp"
+            android:textSize="70sp"
 
             />
         <ImageView
@@ -110,18 +111,18 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_content"
+            android:layout_height="wrap_content"
             android:id="@+id/idTVCondition"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:textAlignemnt="cneter"
+            android:textAlignment="center"
             android:text="Condition"
             android:textColor="@color/white"
             android:layout_below="@+id/idTVIcon" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_content"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_marginBottom="18dp"
             android:text="Today's Weather Forecast"
@@ -132,11 +133,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-        android:layout_height="match_content"
+            android:layout_height="wrap_content"
             android:id="@+id/idRVWeather"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
-            android:layoutManager="androix.recyclerview.widget_LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
             />
 
