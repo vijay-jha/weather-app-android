@@ -15,13 +15,13 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    buildscript {
-        repositories {
-            google() // Just google() will be fine
-            mavenCentral()
-        }
-    }
+//
+//    buildscript {
+//        repositories {
+//            google() // Just google() will be fine
+//            mavenCentral()
+//        }
+//    }
 
     buildTypes {
         release {
