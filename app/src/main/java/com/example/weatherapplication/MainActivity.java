@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setContentView(R.layout.activity_main);
+
         homeRL = findViewById(R.id.idRLHome);
         loadingPB = findViewById(R.id.idPBLoading);
         cityNameTV = findViewById(R.id.idTVCityName);
@@ -83,18 +84,19 @@ public class MainActivity extends AppCompatActivity {
         Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         if (location != null) {
             cityName = getCityName(location.getLongitude(), location.getLatitude());
-            getWeatherInfo(cityName);
+            Log.d("location:", location.toString());
+            Log.d("cityname:", cityName);
         } else {
             cityName = "Pune";
-            getWeatherInfo(cityName);
         }
+        getWeatherInfo(cityName);
 
         searchTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String city = cityEdt.getText().toString();
                 if (city.isEmpty())
-                    Toast.makeText(MainActivity.this, "Pleae enter city name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please enter city name", Toast.LENGTH_SHORT).show();
                 else {
                     cityNameTV.setText(city);
                     getWeatherInfo(city);
@@ -139,13 +141,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getWeatherInfo(String cityName) {
-        String url = "http://api.weatherapi.com/v1/current.json?key=dd2516b7fec04d89bb345352222305&q=" + cityName + "&aqi=no";
+        String url = "http://api.weatherapi.com/v1/forecast.json?key=dd2516b7fec04d89bb345352222305&q=" + cityName + "&days=1&aqi=no&alerts=no";
+
+        Log.d("url", url);
+
+        String newUrl = url;
 
         cityNameTV.setText(cityName);
-        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, newUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                Log.d("response", "onResponse: ");
                 loadingPB.setVisibility(View.GONE);
                 homeRL.setVisibility(View.VISIBLE);
                 weatherRVModelArrayList.clear();
@@ -169,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
                     JSONArray hourArray = forecastO.getJSONArray("hour");
 
                     for (int i = 0; i < hourArray.length(); i++) {
+
                         JSONObject hourObj = hourArray.getJSONObject(i);
                         String time = hourObj.getString("time");
                         String temper = hourObj.getString("temp_c");
@@ -176,21 +185,25 @@ public class MainActivity extends AppCompatActivity {
                         String wind = hourObj.getString("wind_kph");
 
                         weatherRVModelArrayList.add(new WeatherRVModel(time, temper, img, wind));
+
+                        Log.d("hour", hourObj.toString());
                     }
                     weatherRVAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
+                    Log.d("raju", "mera nam");
                     e.printStackTrace();
                 }
-
+                    Log.d("tink", "lalala");
             }
-        }, new Response.ErrorListener() {
+        } , new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.d("error", error.toString());
                 Toast.makeText(MainActivity.this, "please enter valid city name", Toast.LENGTH_SHORT).show();
             }
         });
-        requestQueue.add(jsonObjectRequest);
 
+        requestQueue.add(jsonObjectRequest);
     }
 }
