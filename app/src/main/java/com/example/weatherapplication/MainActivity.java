@@ -167,9 +167,9 @@ public class MainActivity extends AppCompatActivity {
                     conditionTV.setText(conditon);
 
                     if (is_Day == 1) {
-                        Picasso.get().load("https://st4.depositphotos.com/4243035/31473/i/950/depositphotos_314730464-stock-photo-sunset-reflection-lagoon-beautiful-sunset.jpg?forcejpeg=true").into(backTV);
+                        Picasso.get().load("https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fbright-nature&psig=AOvVaw0w92gGFrpd0fPEtyNX5b3D&ust=1653593330610000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCPDorayx-_cCFQAAAAAdAAAAABAJ").into(backTV);
                     } else {
-                        Picasso.get().load("https://www.google.com/search?q=night+images&tbm=isch&ved=2ahUKEwjRl9HXnvX3AhVdzaACHUD8A60Q2-cCegQIABAA&oq=night+images&gs_lcp=CgNpbWcQAzIHCAAQsQMQQzIFCAAQgAQyBAgAEEMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEOgYIABAeEAc6BggAEB4QCDoKCAAQsQMQgwEQQzoLCAAQgAQQsQMQgwE6CAgAEIAEELEDUJURWN8oYJgvaABwAHgAgAGtAogBwQuSAQcwLjUuMi4xmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=l0qLYpHwNt2ag8UPwPiP6Ao&bih=668&biw=1366#imgrc=fGscByXfOVh96M").into(backTV);
+                        Picasso.get().load("https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fbright-nature&psig=AOvVaw0w92gGFrpd0fPEtyNX5b3D&ust=1653593330610000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCPDorayx-_cCFQAAAAAdAAAAABAJ").into(backTV);
                     }
 
                     JSONObject forecastObj = response.getJSONObject("forecast");
