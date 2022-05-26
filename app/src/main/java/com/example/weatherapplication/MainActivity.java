@@ -167,9 +167,9 @@ public class MainActivity extends AppCompatActivity {
                     conditionTV.setText(conditon);
 
                     if (is_Day == 1) {
-                        Picasso.get().load("https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fbright-nature&psig=AOvVaw0w92gGFrpd0fPEtyNX5b3D&ust=1653593330610000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCPDorayx-_cCFQAAAAAdAAAAABAJ").into(backTV);
+                        Picasso.get().load(R.drawable.day_image).into(backTV);
                     } else {
-                        Picasso.get().load("https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fbright-nature&psig=AOvVaw0w92gGFrpd0fPEtyNX5b3D&ust=1653593330610000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCPDorayx-_cCFQAAAAAdAAAAABAJ").into(backTV);
+                        Picasso.get().load(R.drawable.night_image).into(backTV);
                     }
 
                     JSONObject forecastObj = response.getJSONObject("forecast");
